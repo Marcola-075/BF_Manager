@@ -1,0 +1,14 @@
+{
+    "name": "BabyFoot_Manager",
+    "version": "0.1.0",
+    "dependencies": {
+        "body-parser": "~1.10.1",
+        "cookie-session": "^1.3.3",
+        "ejs": "^2.1.4",
+        "express": "^4.17.1",
+        "socket.io": "^2.2.0",
+        "static": "^2.0.0"
+    },
+    "author": "marc-olivier.lauret@epitech.eu",
+    "description": "Un planificateur de match de babyfoot"
+}

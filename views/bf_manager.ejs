@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="style.css"/>
+        <title>BF_manager</title>
+    </head>
+
+    <body>
+        <header>
+                <h1>BabyFoot Manager</h1>
+        </header>
+        <section class= new>
+                <form action="/bf_manager/add/" method="post">
+                    <p>
+                        <input type="text" placeholder="Nouvelle Partie..." name="new_match"  id="new_match" autofocus style="border:5"/>
+                        <input type="submit" value="Valider"/>
+                    </p>
+                </form>
+            </section>
+            <section class= board>
+                    <table>
+                        <% console.log(match_list) %>
+                        <%match_list.forEach(function(bf_manager, index) {
+                            %>
+                        <tr class= item>
+                            <td><input type="checkbox"  id= task_state onclick="set_ok(<%= index %>)" <%= (bf_manager.state === true ? "checked=checked" : "" )%>> </td>
+                            <td><form action="/bf_manager/rm/<%= index %>">
+                                <p>
+                                    <input type="submit" value="Effacer"/> 
+                                </p>
+                            </form></td>
+                            <td><label <%= (bf_manager.state === true ? "class=task_done" : "class=item_name" )%> for="defaultCheck1"><%= bf_manager.content%></label></td>
+                        </tr>
+                        <% }); %>
+                    </table>
+                    <p></p>
+
+                    <script>
+                        function set_ok(id) {
+                            var xhttp = new XMLHttpRequest();
+                            xhttp.onreadystatechange = function() {
+                            if (this.readyState == 4 && this.status == 200) {
+                                document.getElementById(task_state).innerHTML =
+                                this.responseText;
+                                }
+                            };
+                        xhttp.open("GET", "/bf_manager/state/" + id, true);
+                        xhttp.send();
+                        }
+                        </script>
+                </section>
+        <footer>
+                    <p>Un problème ?<a class= mail href="mailto:marc-olivier.lauret@epitech.eu"> <br/> Contactez moi !</a></p>
+            </footer>
+    </body>
+</html>
