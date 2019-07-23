@@ -1,0 +1,130 @@
+@font-face {
+    font-family: 'h1_font';
+    src: url('fonts/h1_font.ttf');
+}
+
+@font-face {
+    font-family: 'fter_font';
+    src: url('fonts/fter_font.ttf')
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+header
+{
+
+    background-color: #FFFFFF;
+    font-size: 2em;
+    font-family: 'h1_font';
+    text-align: center;
+    color:green;
+    border-bottom: 2px green ridge;
+    min-width: 18em;
+    padding-top: 0.5em;
+}
+
+.new
+{
+    background-color: #FFFFFF;
+    margin: 1%;
+    padding: 1%;
+    border: 2px green ridge;
+    width: 20%;
+    min-width: 18em;
+}
+
+.board
+{
+    background-color: #FFFFFF;
+    margin: 1%;
+    border: 2px green ridge;
+    width: 55%;
+    opacity: 0.8;
+    height: 26em;
+    overflow: scroll;
+    min-width: 18em;
+}
+
+.check
+{
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.nb
+{
+    text-align: center;
+    padding: 1em;
+    font-family: 'fter_font';
+    font-weight: bold;
+    color: white;
+    background-color: green;
+    width: 1em;
+    height: 1em;
+    border-right: 2px green ridge;
+    border-bottom: 2px green ridge;
+}
+
+td
+{
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 1em;
+    font-family: 'fter_font';
+    font-weight: bold;
+}
+
+.item_name
+{
+    padding-right: 1em;
+}
+
+.item_name:hover
+{
+    color: gold;
+}
+.task_done
+{
+    text-decoration: line-through;
+    color: grey;
+    padding-right: 1em;
+}
+
+.item
+{
+    margin: 1%;
+    font-family: 'fter_font';
+    font-size: 1.3em;
+}
+
+
+footer
+{
+    font-family: 'fter_font';
+    font-size: 1.3em;
+    background-color: #FFFFFF;
+    border-top: 2px green ridge;
+    margin-bottom: 0em; 
+    margin-top: 2%;
+}
+
+.mail
+{
+    color: green;
+    text-decoration: none;
+    font-weight: bold;
+}
+.mail:hover
+{
+    color: gold;
+}
+
+body
+{
+    background-image: url("img/bck.jpg");
+}
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css"/>
+        <title>BadyFoot Manager</title>
+    </head>
+        <body>
+                <header>
+                        <h1>BabyFoot Manager</h1>
+                </header>
+                <section class= new>
+                        <form method="post" onsubmit="send(this)">
+                                <label for="match"></label>
+                                <input type="text" name="match" id="match"
+                                    placeholder="Nouvelle Partie..." autofocus>
+                                <button type="submit">Valider</button>
+                        </form>
+                </section>
+                <section class= board>
+                    <p id="nb" class= "nb"> </p>
+                    <table id="match_list"></table>
+                </section>
+                <footer>
+                        <p>Un problème ?<a class= mail 
+                        href="mailto:marc-olivier.lauret@epitech.eu"> 
+                        <br/> Contactez moi !</a></p>
+                </footer>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+        
+            var socket = io.connect('http://localhost:8080');
+
+            socket.on('sync_board', function(match_list) {
+                var nbr = 0;
+                var myNode = document.getElementById("match_list");
+                    while (myNode.firstChild) {
+                        myNode.removeChild(myNode.firstChild);
+                        }
+                match_list.forEach(function(match, index) {
+                    insererTache(match, index);
+                    if (match.state === false)
+                        nbr += 1;
+                });
+                document.getElementById("nb").innerHTML = nbr;
+            });
+
+            function send(item){
+                var match = document.getElementById("match").value;
+                socket.emit('add_match', match);
+                insererTache(match);
+                return false;
+            };
+
+            socket.on('add_match', function(data) {
+                insererTache(data.match, data.index);
+            });
+
+            function insererTache(match, index){
+                if (match.state === false) {
+                    match_list.innerHTML += `<tr class= item_name><td><input
+                        type="checkbox" onclick="ch_state(${index})"
+                        </td><td><button type=submit onclick= "suppr(${index})">
+                        ✘</button></td><td>${match.content}</td></tr>`;
+                }
+                else {
+                    match_list.innerHTML += `<tr class= task_done><td><input
+                        type="checkbox" onclick="ch_state(${index})
+                        "checked=checked</td><td><button type=submit onclick= 
+                        "suppr(${index})">✘</button></td><td>${match.content}
+                        </td></tr>`;
+                }
+            }
+
+            function suppr(index){
+                socket.emit('rm_match', index);
+            };
+
+            function ch_state(index) {
+                socket.emit('new_state', index);
+            };
+        </script>
+    </body>
+</html>
