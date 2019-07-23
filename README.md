@@ -10,13 +10,13 @@ Step 2: Extract the files.
 
 Step 3: Open a terminal where you extract the files
 
-Step 4: Install the modules with the following commands:
-npm install ejs
-npm install ent
-npm install express
-npm install http
-npm install socket.io
-npm install stactic
+Step 4: Install the modules with the following commands(one by one):
+ / npm install ejs
+ / npm install ent
+ / npm install express
+ / npm install http
+ / npm install socket.io
+ / npm install stactic
 
 Step 5: Use the command npm install
 
@@ -33,13 +33,13 @@ Etape 2: Extractez les fichiers.
 
 Etape 3: Ouvrez un terminal à l'endroit ou vous avez extrait les fichiers.
 
-Etape 4: Installez les modules avec les commandes suivantes :
-npm install ejs
-npm install ent
-npm install express
-npm install http
-npm install socket.io
-npm install stactic
+Etape 4: Installez les modules avec les commandes suivantes(une par une):
+ / npm install ejs
+ / npm install ent
+ / npm install express
+ / npm install http
+ / npm install socket.io
+ / npm install stactic
 
 Etape 5: Utilisez la commande npm install
 
