@@ -40,7 +40,7 @@
                         }
                 match_list.forEach(function(match, index) {
                     insererTache(match, index);
-                    if (match.state === false)
+                    if (match.match_state === false)
                         nbr += 1;
                 });
                 document.getElementById("nb").innerHTML = nbr;
@@ -58,17 +58,17 @@
             });
 
             function insererTache(match, index){
-                if (match.state === false) {
+                if (match.match_state === 1) {
                     match_list.innerHTML += `<tr class= item_name><td><input
-                        type="checkbox" onclick="ch_state(${index})"
+                        type="checkbox" onclick="ch_match_state(${index})"
                         </td><td><button type=submit onclick= "suppr(${index})">
-                        ✘</button></td><td>${match.content}</td></tr>`;
+                        ✘</button></td><td>${match.match_name}</td></tr>`;
                 }
                 else {
                     match_list.innerHTML += `<tr class= task_done><td><input
-                        type="checkbox" onclick="ch_state(${index})
+                        type="checkbox" onclick="ch_match_state(${index})
                         "checked=checked</td><td><button type=submit onclick= 
-                        "suppr(${index})">✘</button></td><td>${match.content}
+                        "suppr(${index})">✘</button></td><td>${match.match_name}
                         </td></tr>`;
                 }
             }
@@ -77,8 +77,8 @@
                 socket.emit('rm_match', index);
             };
 
-            function ch_state(index) {
-                socket.emit('new_state', index);
+            function ch_match_state(index) {
+                socket.emit('new_match_state', index);
             };
         </script>
     </body>
