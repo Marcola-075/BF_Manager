@@ -34,14 +34,16 @@
 
             socket.on('sync_board', function(match_list) {
                 var nbr = 0;
+                var index = 0;
                 var myNode = document.getElementById("match_list");
                     while (myNode.firstChild) {
                         myNode.removeChild(myNode.firstChild);
                         }
-                match_list.forEach(function(match, index) {
-                    insererTache(match, index);
-                    if (match.match_state === false)
+                match_list.forEach(function(match, pos) {
+                    insererTache(match, pos);
+                    if (match.match_state === 1)
                         nbr += 1;
+                    pos += 1;
                 });
                 document.getElementById("nb").innerHTML = nbr;
             });
@@ -60,17 +62,24 @@
             function insererTache(match, index){
                 if (match.match_state === 1) {
                     match_list.innerHTML += `<tr class= item_name><td><input
-                        type="checkbox" onclick="ch_match_state(${index})"
+                        type="checkbox" onclick="ch_match_state(${index})"></input>
                         </td><td><button type=submit onclick= "suppr(${index})">
                         ✘</button></td><td>${match.match_name}</td></tr>`;
                 }
                 else {
-                    match_list.innerHTML += `<tr class= task_done><td><input
-                        type="checkbox" onclick="ch_match_state(${index})
-                        "checked=checked</td><td><button type=submit onclick= 
-                        "suppr(${index})">✘</button></td><td>${match.match_name}
-                        </td></tr>`;
-                }
+                    match_list.innerHTML += `<tr class= task_done>
+                            <td>
+                                <input type="checkbox" onclick="ch_match_state(${index}) "checked=checked>
+                                </input>
+                            </td>
+                            <td>
+                                <button type=submit onclick= "suppr(${index})">✘ 
+                                </button>
+                            </td>
+                            <td>${match.match_name}
+                            </td>
+                            </tr>`;
+                    }
             }
 
             function suppr(index){
@@ -78,7 +87,7 @@
             };
 
             function ch_match_state(index) {
-                socket.emit('new_match_state', index);
+                socket.emit('new_state', index);
             };
         </script>
     </body>

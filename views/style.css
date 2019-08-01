@@ -109,11 +109,7 @@ footer
     background-color: #FFFFFF;
     border-top: 2px green ridge;
     margin-bottom: 0em; 
-    margin-top: 2em;
-    padding-bottom: 0em;
-    bottom: 0;
-    width: 100%;
-    position:fixed;
+    margin-top: 2%;
 }
 
 .mail
