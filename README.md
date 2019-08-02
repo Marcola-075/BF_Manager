@@ -1,5 +1,5 @@
 # BF_Manager
-Planificateur de match de BabyFoot en temps réel(ou plus simplement, une todolist)
+Planificateur de match de BabyFoot en temps réel (ou plus simplement, une todolist)
 _____________________________________________________________________________________________________________________________
 
 [EN] How install it?
@@ -17,6 +17,7 @@ Step 4: Install the modules with the following commands(one by one):
  / npm install http
  / npm install socket.io
  / npm install stactic
+ / npm install pg
 
 Step 5: Use the command npm install
 
@@ -40,6 +41,7 @@ Etape 4: Installez les modules avec les commandes suivantes(une par une):
  / npm install http
  / npm install socket.io
  / npm install stactic
+ / npm install pg
 
 Etape 5: Utilisez la commande npm install
 
